@@ -27,6 +27,11 @@ public class BuyStepdefs {
         Product prod = catalog.getProduct(name);
         order.addItem(prod, quantity);
     }
+    @Then("ปริมาณคงเหลือในสต็อกของ {string} ควรมีจำนวน {int}")
+    public void quantity_remaining_in_stock_should_be(String name, int quantity) {
+        int quantity_in_stock = catalog.getProduct(name).getStock();
+        assertEquals(quantity, quantity_in_stock);
+    }
 
     @Then("total should be {float}")
     public void total_should_be(double total) {
